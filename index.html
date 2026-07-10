@@ -1,88 +1,218 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
+
 <title>Han Herred Efterskole</title>
 
 <style>
+
 body {
     margin:0;
-    background:#111;
+    background: rgb(32,50,90);
     color:white;
-    font-family:Arial, sans-serif;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    font-family: Arial, sans-serif;
 }
+
+
+/* Selve boksen på infoskærmen */
+
+.container {
+
+    width:60%;
+    height:60%;
+
+    margin:auto;
+    margin-top:5vh;
+
+    background:rgba(255,255,255,0.08);
+
+    border-radius:25px;
+
+    padding:30px;
+
+    text-align:center;
+
+}
+
+
+/* Slides */
 
 .slide {
     display:none;
-    text-align:center;
-    width:90%;
 }
 
 .active {
     display:block;
 }
 
+
 h1 {
-    font-size:60px;
+
+font-size:45px;
+
 }
 
-p {
-    font-size:35px;
+
+.message {
+
+font-size:35px;
+
 }
+
 
 .weather {
-    font-size:40px;
+
+display:flex;
+justify-content:center;
+gap:20px;
+
 }
+
+
+.day {
+
+background:white;
+color:#20325a;
+
+padding:15px;
+
+border-radius:15px;
+
+width:120px;
+
+font-size:20px;
+
+}
+
+
+
 </style>
 
 </head>
 
+
 <body>
+
+
+<div class="container">
 
 
 <div id="weather" class="slide active">
 
-<h1>🌦️ Vejret i Fjerritslev</h1>
 
-<p class="weather">
-Henter vejr...
-</p>
+<h1>
+🌦️ Vejret i Fjerritslev
+</h1>
+
+
+<div class="weather">
+
+
+<div class="day">
+Mandag<br>
+☀️<br>
+18°
+</div>
+
+
+<div class="day">
+Tirsdag<br>
+🌧️<br>
+16°
+</div>
+
+
+<div class="day">
+Onsdag<br>
+☁️<br>
+17°
+</div>
+
+
+<div class="day">
+Torsdag<br>
+☀️<br>
+20°
+</div>
+
+
+<div class="day">
+Fredag<br>
+🌧️<br>
+15°
+</div>
+
 
 </div>
+
+
+</div>
+
 
 
 <div id="message" class="slide">
 
-<h1>Besked</h1>
 
-<p>
-Husk fællessamling kl. 19.30
-</p>
+<h1>
+📢 Besked
+</h1>
+
+
+<div class="message">
+
+07.00 - Morgentur og morgenmad
+09.15 - Formiddagsservering
+11.55 - Frokost
+15.35 - Eftermiddagsservering
+18.00 - Aftensmad
+21.15 - Aftenservering
+21.45 - Egne gange
+22.00 - Aflevering af telefon og computer
+22.20 - Egne værelser
+22.30 - Ro og godnat
+
+<br>
+
 
 </div>
 
 
+</div>
+
+
+
+</div>
+
+
+
 <script>
 
-// Skift mellem slides
 
-let slide = 0;
+// Skift mellem vejr og besked
+
+let slide=0;
+
 
 setInterval(function(){
 
-let slides = document.querySelectorAll(".slide");
 
-slides.forEach(s => s.classList.remove("active"));
+let slides=document.querySelectorAll(".slide");
+
+
+slides.forEach(s=>{
+s.classList.remove("active");
+});
+
 
 slide++;
 
-if(slide >= slides.length){
-    slide = 0;
+
+if(slide>=slides.length){
+slide=0;
 }
+
 
 slides[slide].classList.add("active");
 
@@ -90,14 +220,10 @@ slides[slide].classList.add("active");
 },10000);
 
 
-// Test-vejr
-
-document.querySelector(".weather").innerHTML =
-"Fjerritslev<br>☀️ 18°C<br><br>5 dages prognose kommer her";
-
 
 </script>
 
 
 </body>
+
 </html>
