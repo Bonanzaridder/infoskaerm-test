@@ -1,268 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="da">
 <head>
-
 <meta charset="UTF-8">
 
-<title>Han Herred Efterskole</title>
-
 <style>
-
-body {
+body{
     margin:0;
-    padding:0;
+    background:transparent;
     overflow:hidden;
-    background: rgb(32,50,90);
-    color:white;
-    font-family: Arial, sans-serif;
+    font-family:Arial,sans-serif;
 }
 
+/* Selve boksen */
+.widget{
 
-.container {
+    width:560px;
+    height:320px;
 
-    width:45%;
-    height:auto;
-
-    margin:auto;
-    margin-top:3vh;
-
-    background:rgba(255,255,255,0.08);
+    background:#20325A;
 
     border-radius:20px;
 
+    color:white;
+
     padding:20px;
 
-    text-align:center;
-
-}
-
-
-.slide {
-    display:none;
-}
-
-.active {
-    display:block;
-}
-
-
-h1 {
-    font-size:32px;
-}
-
-
-.message {
-    font-size:20px;
-    line-height:1.3;
-}
-
-
-.weather {
+    box-sizing:border-box;
 
     display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
-
+    flex-direction:column;
+    justify-content:space-between;
 }
 
-
-.day {
-
-    background:white;
-    color:#20325a;
-
-    padding:15px;
-
-    border-radius:15px;
-
-    width:90px;
-
-    font-size:20px;
-
+/* Overskrift */
+.title{
+    font-size:34px;
+    font-weight:bold;
 }
 
+/* Klokken */
+.clock{
+    font-size:90px;
+    font-weight:bold;
+}
 
-
+/* Dato */
+.date{
+    font-size:28px;
+    opacity:.9;
+}
 </style>
 
 </head>
 
-
 <body>
 
+<div class="widget">
 
-<div class="container">
-
-
-<!-- VEJR -->
-
-<div id="weather" class="slide active">
-
-
-<h1>
-🌦️ Vejret i Fjerritslev
-</h1>
-
-
-<div id="forecast" class="weather">
-
-Henter vejr...
-
+<div class="title">
+Han Herred Efterskole
 </div>
 
+<div class="clock" id="clock"></div>
+
+<div class="date" id="date"></div>
 
 </div>
-
-
-
-<!-- BESKED -->
-
-<div id="message" class="slide">
-
-
-<h1>
-📢 Dagens program
-</h1>
-
-
-<div class="message">
-
-07.00 - Morgentur og morgenmad
-<br>
-09.15 - Formiddagsservering
-<br>
-11.55 - Frokost
-<br>
-15.35 - Eftermiddagsservering
-<br>
-18.00 - Aftensmad
-<br>
-21.15 - Aftenservering
-<br>
-21.45 - Egne gange
-<br>
-22.00 - Aflevering af telefon og computer
-<br>
-22.20 - Egne værelser
-<br>
-22.30 - Ro og godnat
-
-</div>
-
-
-</div>
-
-
-</div>
-
-
 
 <script>
 
+function update(){
 
-// SKIFT MELLEM VEJR OG BESKED
+const now=new Date();
 
-let slide=0;
-
-
-setInterval(function(){
-
-
-let slides=document.querySelectorAll(".slide");
-
-
-slides.forEach(s=>{
-s.classList.remove("active");
+document.getElementById("clock").innerHTML=
+now.toLocaleTimeString("da-DK",{
+hour:"2-digit",
+minute:"2-digit"
 });
 
-
-slide++;
-
-
-if(slide>=slides.length){
-slide=0;
-}
-
-
-slides[slide].classList.add("active");
-
-
-},10000);
-
-
-
-
-// HENT RIGTIGT VEJR FRA FJERRITSLEV
-
-fetch("https://api.open-meteo.com/v1/forecast?latitude=57.09&longitude=9.27&daily=weathercode,temperature_2m_max&timezone=Europe%2FCopenhagen")
-.then(response => response.json())
-.then(data => {
-
-
-let dage = [
-"Man",
-"Tir",
-"Ons",
-"Tor",
-"Fre"
-];
-
-
-let ikoner = {
-
-0:"☀️",
-1:"🌤️",
-2:"⛅",
-3:"☁️",
-45:"🌫️",
-61:"🌧️",
-63:"🌧️",
-65:"🌧️",
-71:"❄️",
-80:"🌦️",
-95:"⛈️"
-
-};
-
-
-let html="";
-
-
-for(let i=0;i<5;i++){
-
-
-html += `
-
-<div class="day">
-
-${dage[i]}
-
-<br>
-
-${ikoner[data.daily.weathercode[i]] || "🌦️"}
-
-<br>
-
-${Math.round(data.daily.temperature_2m_max[i])}°
-
-</div>
-
-`;
-
+document.getElementById("date").innerHTML=
+now.toLocaleDateString("da-DK",{
+weekday:"long",
+day:"numeric",
+month:"long"
+});
 
 }
 
-
-document.getElementById("forecast").innerHTML=html;
-
-
-});
-
+update();
+setInterval(update,1000);
 
 </script>
 
-
 </body>
-
 </html>
