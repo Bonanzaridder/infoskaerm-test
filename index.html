@@ -16,8 +16,6 @@ body {
 }
 
 
-/* Selve boksen på infoskærmen */
-
 .container {
 
     width:60%;
@@ -37,8 +35,6 @@ body {
 }
 
 
-/* Slides */
-
 .slide {
     display:none;
 }
@@ -49,40 +45,38 @@ body {
 
 
 h1 {
-
-font-size:45px;
-
+    font-size:45px;
 }
 
 
 .message {
-
-font-size:35px;
-
+    font-size:28px;
+    line-height:1.5;
 }
 
 
 .weather {
 
-display:flex;
-justify-content:center;
-gap:20px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
 
 }
 
 
 .day {
 
-background:white;
-color:#20325a;
+    background:white;
+    color:#20325a;
 
-padding:15px;
+    padding:15px;
 
-border-radius:15px;
+    border-radius:15px;
 
-width:120px;
+    width:90px;
 
-font-size:20px;
+    font-size:20px;
 
 }
 
@@ -99,6 +93,8 @@ font-size:20px;
 <div class="container">
 
 
+<!-- VEJR -->
+
 <div id="weather" class="slide active">
 
 
@@ -107,43 +103,9 @@ font-size:20px;
 </h1>
 
 
-<div class="weather">
+<div id="forecast" class="weather">
 
-
-<div class="day">
-Mandag<br>
-☀️<br>
-18°
-</div>
-
-
-<div class="day">
-Tirsdag<br>
-🌧️<br>
-16°
-</div>
-
-
-<div class="day">
-Onsdag<br>
-☁️<br>
-17°
-</div>
-
-
-<div class="day">
-Torsdag<br>
-☀️<br>
-20°
-</div>
-
-
-<div class="day">
-Fredag<br>
-🌧️<br>
-15°
-</div>
-
+Henter vejr...
 
 </div>
 
@@ -151,36 +113,43 @@ Fredag<br>
 </div>
 
 
+
+<!-- BESKED -->
 
 <div id="message" class="slide">
 
 
 <h1>
-📢 Besked
+📢 Dagens program
 </h1>
 
 
 <div class="message">
 
 07.00 - Morgentur og morgenmad
+<br>
 09.15 - Formiddagsservering
+<br>
 11.55 - Frokost
+<br>
 15.35 - Eftermiddagsservering
+<br>
 18.00 - Aftensmad
+<br>
 21.15 - Aftenservering
+<br>
 21.45 - Egne gange
+<br>
 22.00 - Aflevering af telefon og computer
+<br>
 22.20 - Egne værelser
+<br>
 22.30 - Ro og godnat
 
-<br>
-
-
 </div>
 
 
 </div>
-
 
 
 </div>
@@ -190,7 +159,7 @@ Fredag<br>
 <script>
 
 
-// Skift mellem vejr og besked
+// SKIFT MELLEM VEJR OG BESKED
 
 let slide=0;
 
@@ -219,6 +188,74 @@ slides[slide].classList.add("active");
 
 },10000);
 
+
+
+
+// HENT RIGTIGT VEJR FRA FJERRITSLEV
+
+fetch("https://api.open-meteo.com/v1/forecast?latitude=57.09&longitude=9.27&daily=weathercode,temperature_2m_max&timezone=Europe%2FCopenhagen")
+.then(response => response.json())
+.then(data => {
+
+
+let dage = [
+"Man",
+"Tir",
+"Ons",
+"Tor",
+"Fre"
+];
+
+
+let ikoner = {
+
+0:"☀️",
+1:"🌤️",
+2:"⛅",
+3:"☁️",
+45:"🌫️",
+61:"🌧️",
+63:"🌧️",
+65:"🌧️",
+71:"❄️",
+80:"🌦️",
+95:"⛈️"
+
+};
+
+
+let html="";
+
+
+for(let i=0;i<5;i++){
+
+
+html += `
+
+<div class="day">
+
+${dage[i]}
+
+<br>
+
+${ikoner[data.daily.weathercode[i]] || "🌦️"}
+
+<br>
+
+${Math.round(data.daily.temperature_2m_max[i])}°
+
+</div>
+
+`;
+
+
+}
+
+
+document.getElementById("forecast").innerHTML=html;
+
+
+});
 
 
 </script>
