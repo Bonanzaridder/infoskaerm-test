@@ -1,23 +1,41 @@
 <!DOCTYPE html>
-<html lang="da">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Infoskærm test</title>
+<title>Han Herred Efterskole</title>
 
 <style>
-body{
+body {
     margin:0;
+    background:#111;
+    color:white;
+    font-family:Arial, sans-serif;
+    height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100vh;
-    background:#0f172a;
-    color:white;
-    font-family:Arial;
 }
 
-h1{
-    font-size:70px;
+.slide {
+    display:none;
+    text-align:center;
+    width:90%;
+}
+
+.active {
+    display:block;
+}
+
+h1 {
+    font-size:60px;
+}
+
+p {
+    font-size:35px;
+}
+
+.weather {
+    font-size:40px;
 }
 </style>
 
@@ -25,7 +43,61 @@ h1{
 
 <body>
 
-<h1>🎉 GitHub virker i Viggo 🎉</h1>
+
+<div id="weather" class="slide active">
+
+<h1>🌦️ Vejret i Fjerritslev</h1>
+
+<p class="weather">
+Henter vejr...
+</p>
+
+</div>
+
+
+<div id="message" class="slide">
+
+<h1>Besked</h1>
+
+<p>
+Husk fællessamling kl. 19.30
+</p>
+
+</div>
+
+
+<script>
+
+// Skift mellem slides
+
+let slide = 0;
+
+setInterval(function(){
+
+let slides = document.querySelectorAll(".slide");
+
+slides.forEach(s => s.classList.remove("active"));
+
+slide++;
+
+if(slide >= slides.length){
+    slide = 0;
+}
+
+slides[slide].classList.add("active");
+
+
+},10000);
+
+
+// Test-vejr
+
+document.querySelector(".weather").innerHTML =
+"Fjerritslev<br>☀️ 18°C<br><br>5 dages prognose kommer her";
+
+
+</script>
+
 
 </body>
 </html>
