@@ -20,6 +20,7 @@ body{
 
 
 .box{
+
     width:400px;
     height:230px;
 
@@ -27,69 +28,116 @@ body{
     border-radius:18px;
 
     box-sizing:border-box;
-    padding:16px;
+    padding:18px;
 
     color:white;
 
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
+    position:relative;
+
+}
+
+
+/* Sider */
+.page{
+
+    position:absolute;
+    inset:18px;
+
+    opacity:1;
+    transition:opacity 1s ease;
+
+}
+
+.hidden{
+
+    opacity:0;
+
 }
 
 
 /* Vejr */
+
 .weather-title{
-    font-size:20px;
+
+    font-size:22px;
     font-weight:bold;
+
 }
 
+
 .today{
+
     display:flex;
     align-items:center;
     gap:12px;
-    font-size:32px;
+
+    font-size:34px;
     font-weight:bold;
+
 }
 
+
 .icon{
-    font-size:40px;
+
+    font-size:42px;
+
 }
+
 
 
 .days{
+
     display:flex;
     justify-content:space-between;
+
+    margin-top:12px;
+
     text-align:center;
-    margin-top:5px;
+
 }
+
 
 .day{
+
     font-size:12px;
+
 }
+
 
 .day .icon{
-    font-size:20px;
+
     display:block;
+    font-size:22px;
+
 }
 
+
 .temp{
+
     font-size:14px;
+
 }
 
 
 /* Besked */
-.message{
-    border-top:1px solid rgba(255,255,255,.3);
-    padding-top:8px;
-
-    font-size:13px;
-    line-height:1.35;
-}
 
 .message-title{
-    font-size:15px;
+
+    font-size:22px;
     font-weight:bold;
+
 }
+
+
+.message{
+
+    margin-top:15px;
+
+    font-size:17px;
+    line-height:1.45;
+
+}
+
 
 </style>
 
@@ -102,40 +150,66 @@ body{
 <div class="box">
 
 
-    <div>
+<!-- VEJRSIDE -->
 
-        <div class="weather-title">
-            🌤 Fjerritslev
-        </div>
+<div class="page" id="weatherPage">
 
 
-        <div class="today">
-            <span class="icon" id="todayIcon">☀️</span>
-            <span id="todayTemp">--°</span>
-        </div>
+    <div class="weather-title">
+        🌤 Fjerritslev
+    </div>
 
 
-        <div class="days" id="forecast">
+    <div class="today">
 
-        </div>
+        <span class="icon" id="todayIcon">
+            ☀️
+        </span>
+
+        <span id="todayTemp">
+            --°
+        </span>
 
     </div>
 
+
+    <div class="days" id="forecast"></div>
+
+
+</div>
+
+
+
+
+<!-- BESKEDSIDE -->
+
+<div class="page hidden" id="messagePage">
+
+
+    <div class="message-title">
+        📢 Husk hver dag
+    </div>
 
 
     <div class="message">
 
-        <div class="message-title">
-            📢 Husk hver dag
-        </div>
+        🍽 Morgenmad<br>
+        07.30 - 08.00<br><br>
 
-        🍽 Morgenmad 07.30 - 08.00<br>
-        📚 Undervisning 08.15<br>
-        ☕ Pause 10.00<br>
-        🍽 Middag 12.00<br>
-        🌙 Aftensamling 21.30
+        📚 Undervisning<br>
+        08.15<br><br>
+
+        ☕ Pause<br>
+        10.00<br><br>
+
+        🌙 Aftensamling<br>
+        21.30
 
     </div>
+
+
+</div>
+
 
 
 </div>
@@ -145,11 +219,10 @@ body{
 <script>
 
 
-// BESKEDER ÆNDRES HER
-// Ret bare tiderne ovenfor
+// ----------------------
+// VEJR
+// ----------------------
 
-
-// VEJR FRA OPEN-METEO
 
 const latitude = 57.08;
 const longitude = 9.27;
@@ -157,92 +230,128 @@ const longitude = 9.27;
 
 const weatherIcons = {
 
-    0:"☀️",
-    1:"🌤",
-    2:"🌤",
-    3:"☁️",
-    45:"🌫",
-    48:"🌫",
-    51:"🌦",
-    53:"🌦",
-    55:"🌧",
-    61:"🌧",
-    63:"🌧",
-    65:"🌧",
-    71:"❄️",
-    80:"🌦",
-    81:"🌧",
-    82:"⛈",
-    95:"⛈"
+0:"☀️",
+1:"🌤",
+2:"🌤",
+3:"☁️",
+45:"🌫",
+48:"🌫",
+51:"🌦",
+53:"🌦",
+55:"🌧",
+61:"🌧",
+63:"🌧",
+65:"🌧",
+71:"❄️",
+80:"🌦",
+81:"🌧",
+82:"⛈",
+95:"⛈"
 
 };
 
 
-const daysDK = [
-    "Søn",
-    "Man",
-    "Tir",
-    "Ons",
-    "Tor",
-    "Fre",
-    "Lør"
+const daysDK=[
+"Søn",
+"Man",
+"Tir",
+"Ons",
+"Tor",
+"Fre",
+"Lør"
 ];
+
 
 
 fetch(
 `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weather_code,temperature_2m_max&timezone=Europe%2FCopenhagen`
 )
 
-.then(response => response.json())
+.then(response=>response.json())
 
-.then(data => {
-
-
-    document.getElementById("todayTemp").innerHTML =
-        Math.round(data.daily.temperature_2m_max[0]) + "°";
+.then(data=>{
 
 
-    document.getElementById("todayIcon").innerHTML =
-        weatherIcons[data.daily.weather_code[0]] || "🌤";
+document.getElementById("todayTemp").innerHTML =
+Math.round(data.daily.temperature_2m_max[0])+"°";
+
+
+document.getElementById("todayIcon").innerHTML =
+weatherIcons[data.daily.weather_code[0]] || "🌤";
 
 
 
-    let html="";
+let html="";
 
 
-    for(let i=0;i<7;i++){
+for(let i=0;i<7;i++){
 
 
-        let date = new Date(
-            data.daily.time[i]
-        );
+let date=new Date(data.daily.time[i]);
 
 
-        html += `
+html += `
 
-        <div class="day">
+<div class="day">
 
-            ${daysDK[date.getDay()]}
+${daysDK[date.getDay()]}
 
-            <span class="icon">
-            ${weatherIcons[data.daily.weather_code[i]] || "🌤"}
-            </span>
+<span class="icon">
+${weatherIcons[data.daily.weather_code[i]] || "🌤"}
+</span>
 
-            <span class="temp">
-            ${Math.round(data.daily.temperature_2m_max[i])}°
-            </span>
+<span class="temp">
+${Math.round(data.daily.temperature_2m_max[i])}°
+</span>
 
-        </div>
+</div>
 
-        `;
+`;
 
-    }
+}
 
 
-    document.getElementById("forecast").innerHTML = html;
+document.getElementById("forecast").innerHTML=html;
 
 
 });
+
+
+
+
+// ----------------------
+// SKIFT MELLEM SIDER
+// ----------------------
+
+
+let weatherVisible=true;
+
+
+setInterval(()=>{
+
+
+const weather=document.getElementById("weatherPage");
+const message=document.getElementById("messagePage");
+
+
+if(weatherVisible){
+
+    weather.classList.add("hidden");
+    message.classList.remove("hidden");
+
+}else{
+
+    message.classList.add("hidden");
+    weather.classList.remove("hidden");
+
+}
+
+
+weatherVisible=!weatherVisible;
+
+
+},10000);
+
 
 
 </script>
