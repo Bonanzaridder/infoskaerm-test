@@ -5,6 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+
+
 <style>
 
 html, body{
@@ -19,9 +22,10 @@ html, body{
 
     background:transparent;
 
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Montserrat', Arial, sans-serif;
 
 }
+
 
 
 .box{
@@ -40,6 +44,7 @@ html, body{
     overflow:hidden;
 
 }
+
 
 
 /* ---------- SIDER ---------- */
@@ -72,6 +77,8 @@ html, body{
 
 
 
+
+
 /* ---------- VEJR ---------- */
 
 
@@ -81,7 +88,7 @@ html, body{
 
     font-weight:800;
 
-    margin-bottom:20px;
+    margin-bottom:15px;
 
 }
 
@@ -95,11 +102,11 @@ html, body{
 
     justify-content:center;
 
-    gap:40px;
+    gap:45px;
 
-    margin-top:20px;
+    margin-top:15px;
 
-    margin-bottom:50px;
+    margin-bottom:45px;
 
 }
 
@@ -107,15 +114,7 @@ html, body{
 
 .big-icon{
 
-    font-size:170px;
-
-}
-
-
-
-.today-info{
-
-    text-align:center;
+    font-size:160px;
 
 }
 
@@ -123,9 +122,9 @@ html, body{
 
 .today-label{
 
-    font-size:42px;
+    font-size:38px;
 
-    font-weight:bold;
+    font-weight:700;
 
 }
 
@@ -133,11 +132,13 @@ html, body{
 
 #todayTemp{
 
-    font-size:120px;
+    font-size:110px;
 
     font-weight:800;
 
 }
+
+
 
 
 
@@ -157,9 +158,9 @@ html, body{
 
     border-radius:18px;
 
-    width:95px;
+    width:110px;
 
-    height:170px;
+    height:190px;
 
     display:flex;
 
@@ -171,7 +172,7 @@ html, body{
 
     font-size:28px;
 
-    font-weight:bold;
+    font-weight:800;
 
 }
 
@@ -179,11 +180,9 @@ html, body{
 
 .day .icon{
 
-    display:block;
+    font-size:70px;
 
-    font-size:65px;
-
-    margin:12px 0;
+    margin:15px 0;
 
 }
 
@@ -191,24 +190,26 @@ html, body{
 
 .temp{
 
-    font-size:34px;
+    font-size:36px;
 
-    font-weight:bold;
+    font-weight:800;
 
 }
 
 
 
-/* ---------- BESKED ---------- */
+
+
+/* ---------- DAGSPLAN ---------- */
 
 
 .message-title{
 
-    font-size:48px;
+    font-size:46px;
 
     font-weight:800;
 
-    margin-bottom:35px;
+    margin-bottom:25px;
 
 }
 
@@ -220,7 +221,9 @@ html, body{
 
     border-collapse:collapse;
 
-    font-size:32px;
+    font-size:27px;
+
+    font-weight:700;
 
 }
 
@@ -228,7 +231,7 @@ html, body{
 
 .schedule td{
 
-    padding:12px 0;
+    padding:6px 0;
 
 }
 
@@ -236,11 +239,9 @@ html, body{
 
 .schedule td:first-child{
 
-    width:140px;
+    width:125px;
 
     color:#FFD54F;
-
-    font-weight:800;
 
 }
 
@@ -248,9 +249,10 @@ html, body{
 
 .schedule td:last-child{
 
-    padding-left:20px;
+    padding-left:15px;
 
 }
+
 
 
 
@@ -270,49 +272,49 @@ html, body{
 <div class="page" id="weatherPage">
 
 
-    <div class="weather-title">
+<div class="weather-title">
 
-        🌤 Fjerritslev
+🌤 Fjerritslev
 
-    </div>
-
-
-    <div class="today">
-
-
-        <div id="todayIcon" class="big-icon">
-
-            ☀️
-
-        </div>
+</div>
 
 
 
-        <div class="today-info">
+<div class="today">
 
 
-            <div class="today-label">
+<div id="todayIcon" class="big-icon">
 
-                I dag
+☀️
 
-            </div>
-
-
-            <div id="todayTemp">
-
-                --°
-
-            </div>
+</div>
 
 
-        </div>
+<div>
+
+<div class="today-label">
+
+I dag
+
+</div>
 
 
-    </div>
+<div id="todayTemp">
+
+--°
+
+</div>
+
+
+</div>
+
+
+</div>
 
 
 
-    <div class="days" id="forecast"></div>
+<div class="days" id="forecast"></div>
+
 
 
 </div>
@@ -327,44 +329,47 @@ html, body{
 <div class="page hidden" id="messagePage">
 
 
-    <div class="message-title">
+<div class="message-title">
 
-        ⏰ Dagsrutine
+⏰ Dagsrutine
 
-    </div>
-
-
-    <table class="schedule">
+</div>
 
 
-        <tr><td>07.00</td><td>Morgentur og morgenmad</td></tr>
 
-        <tr><td>09.15</td><td>Formiddagsservering</td></tr>
-
-        <tr><td>11.55</td><td>Frokost</td></tr>
-
-        <tr><td>15.35</td><td>Eftermiddagsservering</td></tr>
-
-        <tr><td>18.00</td><td>Aftensmad</td></tr>
-
-        <tr><td>21.15</td><td>Aftenservering</td></tr>
-
-        <tr><td>21.45</td><td>Egne gange</td></tr>
-
-        <tr><td>22.00</td><td>Aflevering af telefon og computer</td></tr>
-
-        <tr><td>22.20</td><td>Egne værelser</td></tr>
-
-        <tr><td>22.30</td><td>Ro og godnat</td></tr>
+<table class="schedule">
 
 
-    </table>
+<tr><td>07.00</td><td>Morgentur og morgenmad</td></tr>
+
+<tr><td>09.15</td><td>Formiddagsservering</td></tr>
+
+<tr><td>11.55</td><td>Frokost</td></tr>
+
+<tr><td>15.35</td><td>Eftermiddagsservering</td></tr>
+
+<tr><td>18.00</td><td>Aftensmad</td></tr>
+
+<tr><td>21.15</td><td>Aftenservering</td></tr>
+
+<tr><td>21.45</td><td>Egne gange</td></tr>
+
+<tr><td>22.00</td><td>Aflevering af telefon og computer</td></tr>
+
+<tr><td>22.20</td><td>Egne værelser</td></tr>
+
+<tr><td>22.30</td><td>Ro og godnat</td></tr>
+
+
+</table>
 
 
 </div>
 
 
 </div>
+
+
 
 
 
@@ -422,17 +427,11 @@ const weatherIcons = {
 const daysDK=[
 
 "Søn",
-
 "Man",
-
 "Tir",
-
 "Ons",
-
 "Tor",
-
 "Fre",
-
 "Lør"
 
 ];
@@ -448,9 +447,7 @@ fetch(
 )
 
 
-
 .then(response=>response.json())
-
 
 
 .then(data=>{
@@ -464,7 +461,7 @@ Math.round(data.daily.temperature_2m_max[0])+"°";
 
 document.getElementById("todayIcon").innerHTML =
 
-weatherIcons[data.daily.weather_code[0]] || "🌤";
+weatherIcons[data.daily.weather_code[0]] || "☀️";
 
 
 
@@ -472,11 +469,10 @@ let html="";
 
 
 
-for(let i=0;i<7;i++){
+for(let i=0;i<5;i++){
 
 
 let date=new Date(data.daily.time[i]);
-
 
 
 html += `
@@ -489,7 +485,7 @@ ${daysDK[date.getDay()]}
 
 <span class="icon">
 
-${weatherIcons[data.daily.weather_code[i]] || "🌤"}
+${weatherIcons[data.daily.weather_code[i]] || "☀️"}
 
 </span>
 
@@ -509,16 +505,9 @@ ${Math.round(data.daily.temperature_2m_max[i])}°
 }
 
 
+
 document.getElementById("forecast").innerHTML=html;
 
-
-})
-
-
-
-.catch(error=>{
-
-console.log(error);
 
 });
 
@@ -527,11 +516,6 @@ console.log(error);
 
 
 // SKIFT MELLEM SIDER
-
-
-const weatherPage=document.getElementById("weatherPage");
-
-const messagePage=document.getElementById("messagePage");
 
 
 let weatherVisible=true;
@@ -543,18 +527,17 @@ setInterval(()=>{
 
 if(weatherVisible){
 
+document.getElementById("weatherPage").classList.add("hidden");
 
-weatherPage.classList.add("hidden");
-
-messagePage.classList.remove("hidden");
+document.getElementById("messagePage").classList.remove("hidden");
 
 
 }else{
 
 
-messagePage.classList.add("hidden");
+document.getElementById("messagePage").classList.add("hidden");
 
-weatherPage.classList.remove("hidden");
+document.getElementById("weatherPage").classList.remove("hidden");
 
 
 }
