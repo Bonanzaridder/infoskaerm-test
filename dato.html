@@ -23,7 +23,7 @@ html, body {
 .date-box {
 
     width:620px;
-    height:95px;
+    height:100px;
 
     background:#20325A;
 
@@ -37,7 +37,7 @@ html, body {
 
     box-sizing:border-box;
 
-    padding:0 25px;
+    padding:15px 25px;
 
     gap:20px;
 
@@ -48,11 +48,9 @@ html, body {
 
 .icon {
 
-    font-size:58px;
+    font-size:65px;
 
     flex-shrink:0;
-
-}
 
 }
 
@@ -71,70 +69,69 @@ html, body {
 
 }
 
-
-
 </style>
 
 </head>
 
-
 <body>
 
-
 <div class="date-box">
-
 
     <span class="icon">
         📅
     </span>
 
-
     <span id="date"></span>
-
 
 </div>
 
-
-
 <script>
-
 
 function updateDate(){
 
-
     const now = new Date();
 
+    const weekdays = [
+        "SØNDAG",
+        "MANDAG",
+        "TIRSDAG",
+        "ONSDAG",
+        "TORSDAG",
+        "FREDAG",
+        "LØRDAG"
+    ];
 
-    let date = now.toLocaleDateString(
-        "da-DK",
-        {
-            weekday:"long",
-            day:"numeric",
-            month:"long"
-        }
-    );
+    const months = [
+        "JANUAR",
+        "FEBRUAR",
+        "MARTS",
+        "APRIL",
+        "MAJ",
+        "JUNI",
+        "JULI",
+        "AUGUST",
+        "SEPTEMBER",
+        "OKTOBER",
+        "NOVEMBER",
+        "DECEMBER"
+    ];
 
+    const text =
+        weekdays[now.getDay()] +
+        " D. " +
+        now.getDate() +
+        ". " +
+        months[now.getMonth()];
 
-    date = date.toUpperCase();
-
-
-    document.getElementById("date").innerHTML = date;
-
+    document.getElementById("date").innerHTML = text;
 
 }
 
-
 updateDate();
 
-
-/* Opdater én gang i timen */
-
-setInterval(updateDate,3600000);
-
-
+setInterval(updateDate,60000);
 
 </script>
-
 
 </body>
 </html>
