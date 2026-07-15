@@ -20,12 +20,10 @@ html, body {
 }
 
 
-/* Hele boksen */
-
 .box {
 
-    width:450px;
-    height:180px;
+    width:650px;
+    height:90px;
 
     background:#20325A;
 
@@ -35,18 +33,15 @@ html, body {
 
     display:flex;
 
-    flex-direction:column;
-
-    justify-content:center;
-
     align-items:center;
+
+    justify-content:space-between;
 
     box-sizing:border-box;
 
-    padding:15px;
+    padding:0 25px;
 
 }
-
 
 
 /* Dato */
@@ -57,20 +52,15 @@ html, body {
 
     align-items:center;
 
-    justify-content:center;
+    gap:10px;
 
-    gap:12px;
-
-    font-size:38px;
+    font-size:36px;
 
     font-weight:800;
 
     white-space:nowrap;
 
-    line-height:1.1;
-
 }
-
 
 
 /* Ur */
@@ -81,32 +71,22 @@ html, body {
 
     align-items:center;
 
-    justify-content:center;
+    gap:10px;
 
-    gap:12px;
-
-    margin-top:20px;
-
-    font-size:58px;
+    font-size:52px;
 
     font-weight:800;
 
     white-space:nowrap;
 
-    line-height:1;
-
 }
 
-
-
-/* Ikoner */
 
 .icon {
 
     font-size:42px;
 
 }
-
 
 
 </style>
@@ -120,23 +100,22 @@ html, body {
 <div class="box">
 
 
-    <div class="date">
+<div class="date">
 
-        <span class="icon">📅</span>
+<span class="icon">📅</span>
 
-        <span id="date"></span>
+<span id="date"></span>
 
-    </div>
+</div>
 
 
+<div class="clock">
 
-    <div class="clock">
+<span class="icon">🕒</span>
 
-        <span class="icon">🕒</span>
+<span id="clock"></span>
 
-        <span id="clock"></span>
-
-    </div>
+</div>
 
 
 </div>
@@ -149,67 +128,59 @@ html, body {
 function updateInfo(){
 
 
-    const now = new Date();
+const now = new Date();
 
 
-
-    const weekdays = [
-        "SØNDAG",
-        "MANDAG",
-        "TIRSDAG",
-        "ONSDAG",
-        "TORSDAG",
-        "FREDAG",
-        "LØRDAG"
-    ];
-
+const weekdays = [
+"SØNDAG",
+"MANDAG",
+"TIRSDAG",
+"ONSDAG",
+"TORSDAG",
+"FREDAG",
+"LØRDAG"
+];
 
 
-    const months = [
-        "JANUAR",
-        "FEBRUAR",
-        "MARTS",
-        "APRIL",
-        "MAJ",
-        "JUNI",
-        "JULI",
-        "AUGUST",
-        "SEPTEMBER",
-        "OKTOBER",
-        "NOVEMBER",
-        "DECEMBER"
-    ];
+const months = [
+"JANUAR",
+"FEBRUAR",
+"MARTS",
+"APRIL",
+"MAJ",
+"JUNI",
+"JULI",
+"AUGUST",
+"SEPTEMBER",
+"OKTOBER",
+"NOVEMBER",
+"DECEMBER"
+];
 
 
-
-    document.getElementById("date").innerHTML =
-
-        weekdays[now.getDay()] +
-        " D. " +
-        now.getDate() +
-        ". " +
-        months[now.getMonth()];
+document.getElementById("date").innerHTML =
+weekdays[now.getDay()] +
+" D. " +
+now.getDate() +
+". " +
+months[now.getMonth()];
 
 
-
-    document.getElementById("clock").innerHTML =
-
-        now.toLocaleTimeString(
-            "da-DK",
-            {
-                hour:"2-digit",
-                minute:"2-digit",
-                second:"2-digit"
-            }
-        );
+document.getElementById("clock").innerHTML =
+now.toLocaleTimeString(
+"da-DK",
+{
+hour:"2-digit",
+minute:"2-digit",
+second:"2-digit"
+}
+);
 
 
 }
 
 
-
 updateInfo();
-
 
 setInterval(updateInfo,1000);
 
