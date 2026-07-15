@@ -141,6 +141,19 @@ html, body {
 }
 
 
+#todayDetails {
+
+    font-size:22px;
+
+    font-weight:700;
+
+    line-height:1.5;
+
+    margin-top:10px;
+
+}
+
+
 
 .today-label {
 
@@ -335,8 +348,10 @@ I dag
 
 
 <div id="todayTemp">
-
 --°
+</div>
+
+<div id="todayDetails">
 
 </div>
 
@@ -652,9 +667,7 @@ const daysDK = [
 
 
 fetch(
-
-`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weather_code,temperature_2m_max,uv_index_max&timezone=Europe%2FCopenhagen`
-
+`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weather_code,temperature_2m_max,uv_index_max&hourly=weather_code,temperature_2m,precipitation_probability,wind_speed_10m&timezone=Europe%2FCopenhagen`
 )
 
 
@@ -691,11 +704,110 @@ weatherIcon(data.daily.weather_code[0]);
 /* UV indeks */
 
 
-document.getElementById("uvIndex").innerHTML =
+document.getElementById("uvIndex").innerHTML = "";
 
-"UV indeks: " + Math.round(data.daily.uv_index_max[0]);
+// Dagens detaljer
+
+let morning = "☀️";
+let afternoon = "☀️";
+let evening = "☀️";
+
+let rainHour = null;
 
 
+// Find vejret i tidsperioder
+
+data.hourly.time.forEach((time,index)=>{
+
+
+let hour = new Date(time).getHours();
+
+let code = data.hourly.weather_code[index];
+
+let rain = data.hourly.precipitation_probability[index];
+
+
+
+if(hour >= 8 && hour <= 11){
+
+    morning = weatherIcon(code);
+
+}
+
+
+if(hour >= 12 && hour <= 17){
+
+    afternoon = weatherIcon(code);
+
+}
+
+
+if(hour >= 18 && hour <= 22){
+
+    evening = weatherIcon(code);
+
+}
+
+
+
+// Find første tidspunkt med høj regnsandsynlighed
+
+if(
+hour > new Date().getHours()
+&& rain > 50
+&& rainHour === null
+){
+
+rainHour = hour;
+
+}
+
+
+});
+
+
+
+let rainText = "";
+
+
+if(rainHour){
+
+rainText =
+"<br>🌧 Regn forventes kl. " 
++ rainHour;
+
+}
+
+
+
+document.getElementById("todayDetails").innerHTML =
+
+`
+<div>
+${morning} Formiddag
+</div>
+
+<div>
+${afternoon} Eftermiddag
+</div>
+
+<div>
+${evening} Aften
+</div>
+
+<br>
+
+<div>
+💨 Vind ${Math.round(data.hourly.wind_speed_10m[12])} km/t
+</div>
+
+<div>
+☀️ UV ${Math.round(data.daily.uv_index_max[0])}
+</div>
+
+${rainText}
+
+`;
 
 
 
