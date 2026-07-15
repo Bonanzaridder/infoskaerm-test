@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+
+<meta charset="UTF-8">
+
+<style>
+
+html, body {
+
+    margin:0;
+    padding:0;
+
+    background:transparent;
+
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+
+
+/* Hele boksen */
+
+.date-box {
+
+    width:750px;
+    height:130px;
+
+    background:#20325A;
+
+    color:white;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    box-sizing:border-box;
+
+    padding:25px;
+
+    gap:25px;
+
+}
+
+
+/* Kalenderikon */
+
+.icon {
+
+    font-size:65px;
+
+    flex-shrink:0;
+
+}
+
+
+/* Dato tekst */
+
+#date {
+
+    font-size:55px;
+
+    font-weight:bold;
+
+    white-space:nowrap;
+
+    text-transform:uppercase;
+
+}
+
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="date-box">
+
+
+    <span class="icon">
+        📅
+    </span>
+
+
+    <span id="date"></span>
+
+
+</div>
+
+
+
+<script>
+
+
+function updateDate(){
+
+
+    const now = new Date();
+
+
+    let date = now.toLocaleDateString(
+        "da-DK",
+        {
+            weekday:"long",
+            day:"numeric",
+            month:"long"
+        }
+    );
+
+
+    date = date.toUpperCase();
+
+
+    document.getElementById("date").innerHTML = date;
+
+
+}
+
+
+updateDate();
+
+
+/* Opdater én gang i timen */
+
+setInterval(updateDate,3600000);
+
+
+
+</script>
+
+
+</body>
+</html>
