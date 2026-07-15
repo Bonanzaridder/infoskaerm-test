@@ -4,17 +4,15 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
 
 
 <style>
 
 
-html, body {
+html, body{
 
     margin:0;
     padding:0;
@@ -32,9 +30,7 @@ html, body {
 
 
 
-/* HOVEDBOKS */
-
-.box {
+.box{
 
     width:850px;
     height:600px;
@@ -47,25 +43,26 @@ html, body {
 
     color:white;
 
-    box-sizing:border-box;
+    position:relative;
 
     overflow:hidden;
 
-    position:relative;
+    box-sizing:border-box;
 
 }
 
 
 
-/* SIDER */
+/* ---------- SIDER ---------- */
 
-.page {
+
+.page{
 
     position:absolute;
 
     inset:0;
 
-    padding:10px 35px 30px 35px;
+    padding:10px 35px 35px 35px;
 
     box-sizing:border-box;
 
@@ -76,7 +73,7 @@ html, body {
 }
 
 
-.hidden {
+.hidden{
 
     opacity:0;
 
@@ -86,9 +83,7 @@ html, body {
 
 
 
-/* =====================
-        VEJR
-===================== */
+/* ---------- VEJR ---------- */
 
 
 .today{
@@ -99,20 +94,21 @@ html, body {
 
     justify-content:center;
 
-    gap:25px;
+    gap:30px;
 
-    margin-top:15px;
+    margin-top:10px;
 
-    margin-bottom:30px;
+    margin-bottom:35px;
 
 }
 
 
-.big-icon {
 
-    width:150px;
+.big-icon{
 
-    height:150px;
+    width:160px;
+
+    height:160px;
 
     display:flex;
 
@@ -123,7 +119,8 @@ html, body {
 }
 
 
-.big-icon svg {
+
+.big-icon svg{
 
     width:100%;
 
@@ -133,46 +130,37 @@ html, body {
 
 
 
-.today-info {
+.today-info{
 
     text-align:center;
 
 }
 
 
-#todayDetails {
 
-    font-size:22px;
+.today-label{
+
+    font-size:28px;
 
     font-weight:700;
 
-    line-height:1.4;
+}
 
-    width:230px;
+
+
+#todayTemp{
+
+    font-size:90px;
+
+    font-weight:800;
+
+    line-height:1;
 
 }
 
 
-#todayDetails div {
 
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-}
-
-
-#todayDetails svg {
-
-    width:35px;
-
-    height:35px;
-
-}
-
-#todayDetails {
+#todayExtra{
 
     font-size:22px;
 
@@ -185,83 +173,73 @@ html, body {
 }
 
 
-#todayDetails svg {
+
+#todayDetails{
+
+    width:230px;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    line-height:1.4;
+
+}
+
+
+
+#todayDetails div{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+
+
+#todayDetails svg{
 
     width:35px;
 
     height:35px;
 
-    vertical-align:middle;
-
 }
 
 
 
+/* ---------- 5 DAGE ---------- */
 
 
-
-
-#todayTemp {
-
-    font-size:95px;
-
-    font-weight:800;
-
-    line-height:1;
-
-}
-
-
-
-
-
-.uv {
-
-    text-align:center;
-
-    font-size:24px;
-
-    font-weight:700;
-
-    margin-top:-20px;
-
-    margin-bottom:20px;
-
-}
-
-
-
-
-
-.days {
+.days{
 
     display:flex;
 
     justify-content:space-between;
 
-    gap:12px;
-
 }
 
 
 
-.day {
+.day{
 
     background:rgba(255,255,255,0.12);
 
     border-radius:18px;
 
-    width:140px;
+    width:110px;
 
-    height:180px;
+    height:190px;
 
     display:flex;
 
     flex-direction:column;
 
-    align-items:center;
-
     justify-content:center;
+
+    align-items:center;
 
     font-size:28px;
 
@@ -271,52 +249,45 @@ html, body {
 
 
 
-.day .icon svg {
+.day .icon svg{
 
-    width:70px;
+    width:65px;
 
-    height:70px;
+    height:65px;
 
 }
 
 
 
-.temp {
+.temp{
 
     font-size:36px;
 
     font-weight:800;
 
-    margin-top:5px;
-
 }
+/* ---------- DAGSPLAN ---------- */
 
 
-
-/* =====================
-       DAGSRUTINE
-===================== */
-
-
-.message-title {
+.message-title{
 
     font-size:46px;
 
     font-weight:800;
 
-    margin-bottom:20px;
+    margin-bottom:15px;
 
 }
 
 
 
-.schedule {
+.schedule{
 
     width:100%;
 
     border-collapse:collapse;
 
-    font-size:30px;
+    font-size:32px;
 
     font-weight:700;
 
@@ -324,31 +295,30 @@ html, body {
 
 
 
-.schedule td {
+.schedule td{
 
-    padding:5px 0;
+    padding:6px 0;
 
 }
 
 
 
-.schedule td:first-child {
+.schedule td:first-child{
 
-    width:130px;
+    width:125px;
 
     color:#FFD54F;
 
-    font-weight:800;
-
 }
 
 
 
-.schedule td:last-child {
+.schedule td:last-child{
 
-    padding-left:20px;
+    padding-left:15px;
 
 }
+
 
 
 </style>
@@ -362,57 +332,48 @@ html, body {
 <div class="box">
 
 
-<!-- VEJRSIDE -->
+<!-- VEJR -->
+
 
 <div class="page" id="weatherPage">
 
 
+
 <div class="today">
 
 
-<div id="todayIcon" class="big-icon"></div>
+<div id="todayIcon" class="big-icon">
 
-
-<div class="today-info">
-
-
-<div class="today-label">
-
-I dag
+☀️
 
 </div>
 
 
-<div class="today">
-
-
-<div id="todayIcon" class="big-icon"></div>
-
-
 
 <div class="today-info">
 
 
 <div class="today-label">
+
 I DAG
+
 </div>
-
-
-<div class="today">
-
-
-<div id="todayIcon" class="big-icon"></div>
-
-
-<div class="today-info">
 
 
 <div id="todayTemp">
+
 --°
+
+</div>
+
+
+<div id="todayExtra">
+
 </div>
 
 
 </div>
+
 
 
 <div id="todayDetails">
@@ -420,20 +381,18 @@ I DAG
 </div>
 
 
-</div>
-
-
-<div class="uv" id="uvIndex">
-
-UV indeks: --
 
 </div>
+
 
 
 <div class="days" id="forecast"></div>
 
 
+
 </div>
+
+
 
 
 
@@ -448,6 +407,7 @@ UV indeks: --
 ⏰ Dagsrutine
 
 </div>
+
 
 
 <table class="schedule">
@@ -478,17 +438,21 @@ UV indeks: --
 
 
 </div>
+
+
+</div>
+
+
+
+
+
 <script>
 
 
 const latitude = 57.08;
+
 const longitude = 9.27;
 
-
-
-/* =====================
-       VEJRIKONER
-===================== */
 
 
 function weatherIcon(code){
@@ -498,9 +462,9 @@ if(code === 0){
 
 return `
 
-<svg viewBox="0 0 120 120">
+<svg viewBox="0 0 100 100">
 
-<circle cx="60" cy="60" r="28" fill="#FFD54F"/>
+<circle cx="50" cy="50" r="25" fill="#FFD54F"/>
 
 </svg>
 
@@ -512,23 +476,23 @@ return `
 
 if(code === 1 || code === 2){
 
-
 return `
 
-<svg viewBox="0 0 140 120">
+<svg viewBox="0 0 120 100">
 
 
-<circle cx="45" cy="45" r="25" fill="#FFD54F"/>
+<circle cx="40" cy="35" r="22" fill="#FFD54F"/>
 
 
-<path d="
-M40 90
-C20 90 20 65 40 65
-C45 40 85 45 90 70
-C110 70 110 95 90 95
-Z"
+<path d="M35 75
 
-fill="#FFFFFF"/>
+C20 75 20 55 35 55
+
+C40 35 75 40 75 60
+
+C95 60 95 80 75 80Z"
+
+fill="white"/>
 
 
 </svg>
@@ -536,26 +500,24 @@ fill="#FFFFFF"/>
 `;
 
 }
-
-
 
 
 if(code === 3){
 
-
 return `
 
-<svg viewBox="0 0 140 120">
+<svg viewBox="0 0 120 100">
 
 
-<path d="
-M35 90
-C15 90 15 65 35 65
-C45 40 85 45 90 70
-C110 70 110 95 90 95
-Z"
+<path d="M30 75
 
-fill="#FFFFFF"/>
+C10 75 15 50 35 50
+
+C45 25 85 35 85 60
+
+C105 60 105 80 85 80Z"
+
+fill="white"/>
 
 
 </svg>
@@ -563,138 +525,75 @@ fill="#FFFFFF"/>
 `;
 
 }
-
-
-
-
-
 if(code >= 51 && code <= 67){
-
-
-return `
-
-<svg viewBox="0 0 140 140">
-
-
-<path d="
-M35 75
-C15 75 15 50 35 50
-C45 25 90 35 90 60
-C115 60 115 85 90 85
-Z"
-
-fill="#FFFFFF"/>
-
-
-<line x1="45" y1="95"
-x2="40" y2="120"
-stroke="#5DADE2"
-stroke-width="7"/>
-
-
-<line x1="75" y1="95"
-x2="70" y2="120"
-stroke="#5DADE2"
-stroke-width="7"/>
-
-
-</svg>
-
-`;
-
-}
-
-
-
-
-
-if(code >= 80 && code <= 82){
-
-
-return `
-
-<svg viewBox="0 0 140 140">
-
-
-<path d="
-M35 75
-C15 75 15 50 35 50
-C45 25 90 35 90 60
-C115 60 115 85 90 85
-Z"
-
-fill="#FFFFFF"/>
-
-
-
-<line x1="45" y1="95"
-x2="40" y2="120"
-stroke="#3498DB"
-stroke-width="8"/>
-
-
-
-<line x1="75" y1="95"
-x2="70" y2="120"
-stroke="#3498DB"
-stroke-width="8"/>
-
-
-</svg>
-
-`;
-
-}
-
-
-
-
-
-if(code >= 95){
-
-
-return `
-
-<svg viewBox="0 0 140 140">
-
-
-<path d="
-M35 75
-C15 75 15 50 35 50
-C45 25 90 35 90 60
-C115 60 115 85 90 85
-Z"
-
-fill="#FFFFFF"/>
-
-
-<polyline points="
-65,90
-50,115
-65,110
-55,135"
-
-fill="none"
-
-stroke="#FFD54F"
-
-stroke-width="8"/>
-
-
-</svg>
-
-`;
-
-}
-
-
-
 
 return `
 
 <svg viewBox="0 0 120 120">
 
-<circle cx="60" cy="60" r="28" fill="#FFD54F"/>
+<path d="M30 65
+C10 65 15 40 35 40
+C45 15 85 25 85 50
+C105 50 105 70 85 70Z"
+
+fill="white"/>
+
+
+<line x1="40" y1="80" x2="35" y2="105"
+stroke="#5DADE2"
+stroke-width="6"/>
+
+
+<line x1="70" y1="80" x2="65" y2="105"
+stroke="#5DADE2"
+stroke-width="6"/>
+
+
+</svg>
+
+`;
+
+}
+
+
+
+if(code >= 80 && code <= 82){
+
+return `
+
+<svg viewBox="0 0 120 120">
+
+<path d="M30 65
+C10 65 15 40 35 40
+C45 15 85 25 85 50
+C105 50 105 70 85 70Z"
+
+fill="white"/>
+
+
+<line x1="40" y1="80" x2="35" y2="105"
+stroke="#3498DB"
+stroke-width="7"/>
+
+
+<line x1="70" y1="80" x2="65" y2="105"
+stroke="#3498DB"
+stroke-width="7"/>
+
+
+</svg>
+
+`;
+
+}
+
+
+
+return `
+
+<svg viewBox="0 0 100 100">
+
+<circle cx="50" cy="50" r="25" fill="#FFD54F"/>
 
 </svg>
 
@@ -705,7 +604,8 @@ return `
 
 
 
-const daysDK = [
+
+const daysDK=[
 
 "Søn",
 "Man",
@@ -721,38 +621,28 @@ const daysDK = [
 
 
 
-/* =====================
-       HENT VEJR
-===================== */
-
-
-
 fetch(
-`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weather_code,temperature_2m_max,uv_index_max&hourly=weather_code,temperature_2m,precipitation_probability,wind_speed_10m&timezone=Europe%2FCopenhagen`
+
+`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weather_code,temperature_2m_max,uv_index_max&hourly=weather_code,wind_speed_10m&timezone=Europe%2FCopenhagen`
+
 )
 
 
-
-.then(response => response.json())
-
-
-.then(data => {
+.then(response=>response.json())
 
 
+.then(data=>{
 
-/* Temperatur i dag */
 
+// Temperatur i dag
 
 document.getElementById("todayTemp").innerHTML =
 
-Math.round(data.daily.temperature_2m_max[0]) + "°";
+Math.round(data.daily.temperature_2m_max[0])+"°";
 
 
 
-
-
-/* Dagens ikon */
-
+// Stort ikon
 
 document.getElementById("todayIcon").innerHTML =
 
@@ -761,131 +651,73 @@ weatherIcon(data.daily.weather_code[0]);
 
 
 
-
-/* UV indeks */
-
-
-document.getElementById("uvIndex").innerHTML = "";
-
-// Dagens detaljer
-
-let morning = "☀️";
-let afternoon = "☀️";
-let evening = "☀️";
-
-let rainHour = null;
-
-
-// Find vejret i tidsperioder
-
-data.hourly.time.forEach((time,index)=>{
-
-
-let hour = new Date(time).getHours();
-
-let code = data.hourly.weather_code[index];
-
-let rain = data.hourly.precipitation_probability[index];
-
-
-
-if(hour >= 8 && hour <= 11){
-
-    morning = weatherIcon(code);
-
-}
-
-
-if(hour >= 12 && hour <= 17){
-
-    afternoon = weatherIcon(code);
-
-}
-
-
-if(hour >= 18 && hour <= 22){
-
-    evening = weatherIcon(code);
-
-}
-
-
-
-// Find første tidspunkt med høj regnsandsynlighed
-
-if(
-hour > new Date().getHours()
-&& rain > 50
-&& rainHour === null
-){
-
-rainHour = hour;
-
-}
-
-
-});
-
-
-
-let rainText = "";
-
-
-if(rainHour){
-
-rainText =
-"<br>🌧 Regn forventes kl. " 
-+ rainHour;
-
-}
-
+// Formiddag / eftermiddag / aften
 
 
 document.getElementById("todayDetails").innerHTML =
 
 `
-<div>
-${morning} Formiddag
-</div>
 
 <div>
-${afternoon} Eftermiddag
+
+${weatherIcon(data.hourly.weather_code[9])}
+
+Formiddag
+
 </div>
+
 
 <div>
-${evening} Aften
+
+${weatherIcon(data.hourly.weather_code[14])}
+
+Eftermiddag
+
 </div>
 
-<br>
 
 <div>
-💨 Vind ${Math.round(data.hourly.wind_speed_10m[12])} km/t
-</div>
 
-<div>
-☀️ UV ${Math.round(data.daily.uv_index_max[0])}
-</div>
+${weatherIcon(data.hourly.weather_code[20])}
 
-${rainText}
+Aften
+
+</div>
 
 `;
 
 
 
 
-/* De næste 5 dage */
+// UV og vind
+
+document.getElementById("todayExtra").innerHTML =
+
+`
+
+UV ${Math.round(data.daily.uv_index_max[0])}
+
+<br>
+
+Vind ${Math.round(data.hourly.wind_speed_10m[12])} km/t
+
+`;
 
 
-let html = "";
 
 
 
-for(let i = 0; i < 5; i++){
+// De næste 5 dage
+
+
+let html="";
 
 
 
-let date = new Date(data.daily.time[i]);
+for(let i=0;i<5;i++){
 
+
+let date=new Date(data.daily.time[i]);
 
 
 html += `
@@ -897,15 +729,11 @@ html += `
 ${daysDK[date.getDay()]}
 
 
-
 <span class="icon">
-
 
 ${weatherIcon(data.daily.weather_code[i])}
 
-
 </span>
-
 
 
 <span class="temp">
@@ -915,9 +743,7 @@ ${Math.round(data.daily.temperature_2m_max[i])}°
 </span>
 
 
-
 </div>
-
 
 
 `;
@@ -926,63 +752,66 @@ ${Math.round(data.daily.temperature_2m_max[i])}°
 
 
 
-document.getElementById("forecast").innerHTML = html;
+document.getElementById("forecast").innerHTML=html;
 
 
 
 })
 
 
-.catch(error => {
+
+.catch(error=>{
 
 
 console.log(error);
 
 
-document.getElementById("forecast").innerHTML =
+document.getElementById("forecast").innerHTML=
 
 "Kunne ikke hente vejret";
 
 
 });
 
-// =====================
+
+
+
+
 // SKIFT MELLEM VEJR OG DAGSRUTINE
-// =====================
 
 
-let weatherVisible = true;
-
-
-setInterval(() => {
-
-
-    const weatherPage = document.getElementById("weatherPage");
-
-    const messagePage = document.getElementById("messagePage");
+let weatherVisible=true;
 
 
 
-    if(weatherVisible){
+setInterval(()=>{
 
 
-        weatherPage.classList.add("hidden");
-
-        messagePage.classList.remove("hidden");
+if(weatherVisible){
 
 
-    } else {
+document.getElementById("weatherPage").classList.add("hidden");
 
 
-        messagePage.classList.add("hidden");
-
-        weatherPage.classList.remove("hidden");
+document.getElementById("messagePage").classList.remove("hidden");
 
 
-    }
+}
+
+else{
 
 
-    weatherVisible = !weatherVisible;
+document.getElementById("messagePage").classList.add("hidden");
+
+
+document.getElementById("weatherPage").classList.remove("hidden");
+
+
+}
+
+
+weatherVisible=!weatherVisible;
+
 
 
 },10000);
@@ -995,3 +824,4 @@ setInterval(() => {
 </body>
 
 </html>
+
