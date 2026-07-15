@@ -91,22 +91,21 @@ html, body {
 ===================== */
 
 
-.today {
+.today{
 
     display:flex;
 
-    justify-content:center;
-
     align-items:center;
 
-    gap:35px;
+    justify-content:center;
+
+    gap:25px;
 
     margin-top:15px;
 
     margin-bottom:30px;
 
 }
-
 
 
 .big-icon {
@@ -135,7 +134,37 @@ html, body {
 
 
 .today-info {
+#todayDetails {
 
+    font-size:22px;
+
+    font-weight:700;
+
+    line-height:1.4;
+
+    width:220px;
+
+}
+
+
+#todayDetails div {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+
+#todayDetails svg {
+
+    width:35px;
+
+    height:35px;
+
+}
     text-align:center;
 
 }
@@ -358,16 +387,35 @@ I dag
 </div>
 
 
+<div class="today">
+
+
+<div id="todayIcon" class="big-icon"></div>
+
+
+
+<div class="today-info">
+
+
+<div class="today-label">
+I DAG
+</div>
+
+
 <div id="todayTemp">
 --°
 </div>
+
+
+</div>
+
+
+
 
 <div id="todayDetails">
 
 </div>
 
-
-</div>
 
 
 </div>
