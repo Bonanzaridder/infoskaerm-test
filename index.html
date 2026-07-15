@@ -31,7 +31,7 @@ html, body{
 .page{
     position:absolute;
     inset:0;
-    padding:25px;
+    padding:35px;
     box-sizing:border-box;
 
     opacity:1;
@@ -50,7 +50,41 @@ html, body{
     font-weight:bold;
     margin-bottom:15px;
 }
+.today{
 
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:40px;
+
+    margin-top:20px;
+    margin-bottom:50px;
+
+}
+
+
+.big-icon{
+
+    font-size:150px;
+
+}
+
+
+.today-label{
+
+    font-size:38px;
+    font-weight:bold;
+
+}
+
+
+#todayTemp{
+
+    font-size:100px;
+    font-weight:bold;
+
+}
 .today{
     display:flex;
     align-items:center;
@@ -151,10 +185,25 @@ html, body{
         🌤 Fjerritslev
     </div>
 
-    <div class="today">
-        <span class="icon" id="todayIcon">☀️</span>
-        <span id="todayTemp">--°</span>
+   <div class="today">
+
+    <div id="todayIcon" class="big-icon">
+        ☀️
     </div>
+
+    <div class="today-info">
+
+        <div class="today-label">
+            I dag
+        </div>
+
+        <div id="todayTemp">
+            --°
+        </div>
+
+    </div>
+
+</div>
 
     <div class="days" id="forecast"></div>
 
