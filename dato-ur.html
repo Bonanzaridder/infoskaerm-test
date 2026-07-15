@@ -20,12 +20,12 @@ html, body {
 }
 
 
-/* Samlet boks */
+/* Hele boksen */
 
 .box {
 
-    width:1100px;
-    height:90px;
+    width:450px;
+    height:180px;
 
     background:#20325A;
 
@@ -35,15 +35,18 @@ html, body {
 
     display:flex;
 
-    align-items:center;
+    flex-direction:column;
 
-    justify-content:space-between;
+    justify-content:center;
+
+    align-items:center;
 
     box-sizing:border-box;
 
-    padding:0 35px;
+    padding:15px;
 
 }
+
 
 
 /* Dato */
@@ -54,13 +57,17 @@ html, body {
 
     align-items:center;
 
+    justify-content:center;
+
     gap:12px;
 
-    font-size:42px;
+    font-size:38px;
 
     font-weight:800;
 
     white-space:nowrap;
+
+    line-height:1.1;
 
 }
 
@@ -74,13 +81,19 @@ html, body {
 
     align-items:center;
 
+    justify-content:center;
+
     gap:12px;
 
-    font-size:52px;
+    margin-top:20px;
+
+    font-size:58px;
 
     font-weight:800;
 
     white-space:nowrap;
+
+    line-height:1;
 
 }
 
@@ -91,8 +104,6 @@ html, body {
 .icon {
 
     font-size:42px;
-
-    flex-shrink:0;
 
 }
 
@@ -111,9 +122,7 @@ html, body {
 
     <div class="date">
 
-        <span class="icon">
-            📅
-        </span>
+        <span class="icon">📅</span>
 
         <span id="date"></span>
 
@@ -123,9 +132,7 @@ html, body {
 
     <div class="clock">
 
-        <span class="icon">
-            🕒
-        </span>
+        <span class="icon">🕒</span>
 
         <span id="clock"></span>
 
@@ -175,16 +182,13 @@ function updateInfo(){
 
 
 
-    const dateText =
+    document.getElementById("date").innerHTML =
+
         weekdays[now.getDay()] +
         " D. " +
         now.getDate() +
         ". " +
         months[now.getMonth()];
-
-
-
-    document.getElementById("date").innerHTML = dateText;
 
 
 
@@ -199,6 +203,7 @@ function updateInfo(){
             }
         );
 
+
 }
 
 
@@ -207,7 +212,6 @@ updateInfo();
 
 
 setInterval(updateInfo,1000);
-
 
 
 </script>
