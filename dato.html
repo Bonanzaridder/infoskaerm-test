@@ -6,7 +6,7 @@
 
 <style>
 
-html, body {
+html, body{
 
     margin:0;
     padding:0;
@@ -20,10 +20,11 @@ html, body {
 
 /* Hele boksen */
 
-.date-box {
+.date-box{
 
-    width:620px;
-    height:100px;
+    width:700px;
+
+    height:90px;
 
     background:#20325A;
 
@@ -33,39 +34,43 @@ html, body {
 
     display:flex;
 
+    justify-content:center;
+
     align-items:center;
+
+    gap:18px;
 
     box-sizing:border-box;
 
-    padding:15px 25px;
-
-    gap:20px;
+    padding:0 20px;
 
 }
 
 
 /* Kalenderikon */
 
-.icon {
+.icon{
 
-    font-size:65px;
+    font-size:56px;
 
     flex-shrink:0;
 
 }
 
 
-/* Dato tekst */
+/* Dato */
 
-#date {
+#date{
 
-    font-size:55px;
+    font-size:52px;
 
     font-weight:bold;
 
+    text-transform:uppercase;
+
     white-space:nowrap;
 
-    text-transform:uppercase;
+    line-height:1;
 
 }
 
