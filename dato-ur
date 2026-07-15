@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+
+<meta charset="UTF-8">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+
+<style>
+
+html, body {
+
+    margin:0;
+    padding:0;
+
+    background:transparent;
+
+    font-family:'Montserrat', Arial, sans-serif;
+
+}
+
+
+.box {
+
+    width:1000px;
+    height:115px;
+
+    background:#20325A;
+
+    color:white;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    box-sizing:border-box;
+
+    padding:0 35px;
+
+}
+
+
+/* Dato */
+
+.date {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    font-size:48px;
+
+    font-weight:800;
+
+    white-space:nowrap;
+
+}
+
+
+
+/* Ur */
+
+.clock {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    font-size:52px;
+
+    font-weight:800;
+
+    white-space:nowrap;
+
+}
+
+
+.icon {
+
+    font-size:55px;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="box">
+
+
+    <div class="date">
+
+        <span class="icon">📅</span>
+
+        <span id="date"></span>
+
+    </div>
+
+
+    <div class="clock">
+
+        <span class="icon">🕒</span>
+
+        <span id="clock"></span>
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+function update(){
+
+    const now = new Date();
+
+
+    const weekdays = [
+        "SØNDAG",
+        "MANDAG",
+        "TIRSDAG",
+        "ONSDAG",
+        "TORSDAG",
+        "FREDAG",
+        "LØRDAG"
+    ];
+
+
+    const months = [
+        "JANUAR",
+        "FEBRUAR",
+        "MARTS",
+        "APRIL",
+        "MAJ",
+        "JUNI",
+        "JULI",
+        "AUGUST",
+        "SEPTEMBER",
+        "OKTOBER",
+        "NOVEMBER",
+        "DECEMBER"
+    ];
+
+
+    document.getElementById("date").innerHTML =
+        weekdays[now.getDay()] +
+        " D. " +
+        now.getDate() +
+        ". " +
+        months[now.getMonth()];
+
+
+    document.getElementById("clock").innerHTML =
+        now.toLocaleTimeString(
+            "da-DK",
+            {
+                hour:"2-digit",
+                minute:"2-digit",
+                second:"2-digit"
+            }
+        );
+
+}
+
+
+update();
+
+setInterval(update,1000);
+
+
+</script>
+
+
+</body>
+</html>
