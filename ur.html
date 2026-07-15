@@ -6,7 +6,7 @@
 
 <style>
 
-html, body{
+html, body {
 
     margin:0;
     padding:0;
@@ -18,60 +18,21 @@ html, body{
 }
 
 
-.container{
+/* Ur-boksen */
 
-    display:flex;
+.clock-box {
 
-    flex-direction:column;
-
-    gap:20px;
-
-}
-
-
-
-/* DATO */
-
-.date-box{
-
-    width:530px;
+    width:420px;
     height:130px;
 
     background:#20325A;
+
     color:white;
 
     border-radius:18px;
 
     display:flex;
-    align-items:center;
 
-    box-sizing:border-box;
-
-    padding:25px;
-
-    gap:25px;
-
-    font-size:55px;
-
-    font-weight:bold;
-
-}
-
-
-
-/* UR */
-
-.clock-box{
-
-    width:300px;
-    height:130px;
-
-    background:#20325A;
-    color:white;
-
-    border-radius:18px;
-
-    display:flex;
     align-items:center;
 
     box-sizing:border-box;
@@ -80,21 +41,36 @@ html, body{
 
     gap:20px;
 
-    font-size:75px;
-
-    font-weight:bold;
-
 }
 
 
+/* Ur ikon */
 
-/* IKONER */
-
-.icon{
+.icon {
 
     font-size:65px;
 
+    flex-shrink:0;
+
 }
+
+
+/* Selve tiden */
+
+#clock {
+
+    font-size:65px;
+
+    font-weight:bold;
+
+    font-family:"Courier New", monospace;
+
+    letter-spacing:2px;
+
+    white-space:nowrap;
+
+}
+
 
 
 </style>
@@ -105,30 +81,17 @@ html, body{
 <body>
 
 
-<div class="container">
+<div class="clock-box">
 
 
-    <div class="date-box">
-
-        <span class="icon">
-            📅
-        </span>
-
-        <span id="date"></span>
-
-    </div>
+    <span class="icon">
+        🕒
+    </span>
 
 
-
-    <div class="clock-box">
-
-        <span class="icon">
-            🕒
-        </span>
-
-        <span id="clock"></span>
-
-    </div>
+    <span id="clock">
+        00:00:00
+    </span>
 
 
 </div>
@@ -138,35 +101,11 @@ html, body{
 <script>
 
 
-function updateTime(){
+function updateClock(){
 
 
     const now = new Date();
 
-
-
-    // DATO
-
-    let date = now.toLocaleDateString(
-        "da-DK",
-        {
-            weekday:"long",
-            day:"numeric",
-            month:"long"
-        }
-    );
-
-
-    date = date.toUpperCase();
-
-
-
-    document.getElementById("date").innerHTML =
-        date;
-
-
-
-    // UR
 
     document.getElementById("clock").innerHTML =
 
@@ -174,7 +113,8 @@ function updateTime(){
             "da-DK",
             {
                 hour:"2-digit",
-                minute:"2-digit"
+                minute:"2-digit",
+                second:"2-digit"
             }
         );
 
@@ -182,10 +122,11 @@ function updateTime(){
 }
 
 
+updateClock();
 
-updateTime();
 
-setInterval(updateTime,1000);
+setInterval(updateClock,1000);
+
 
 
 </script>
