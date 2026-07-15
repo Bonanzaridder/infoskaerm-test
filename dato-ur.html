@@ -20,9 +20,11 @@ html, body {
 }
 
 
+/* Samlet boks */
+
 .box {
 
-    width:1000px;
+    width:1100px;
     height:115px;
 
     background:#20325A;
@@ -52,9 +54,9 @@ html, body {
 
     align-items:center;
 
-    gap:15px;
+    gap:12px;
 
-    font-size:48px;
+    font-size:42px;
 
     font-weight:800;
 
@@ -72,7 +74,7 @@ html, body {
 
     align-items:center;
 
-    gap:15px;
+    gap:12px;
 
     font-size:52px;
 
@@ -83,11 +85,17 @@ html, body {
 }
 
 
+
+/* Ikoner */
+
 .icon {
 
-    font-size:55px;
+    font-size:48px;
+
+    flex-shrink:0;
 
 }
+
 
 
 </style>
@@ -103,16 +111,21 @@ html, body {
 
     <div class="date">
 
-        <span class="icon">📅</span>
+        <span class="icon">
+            📅
+        </span>
 
         <span id="date"></span>
 
     </div>
 
 
+
     <div class="clock">
 
-        <span class="icon">🕒</span>
+        <span class="icon">
+            🕒
+        </span>
 
         <span id="clock"></span>
 
@@ -126,9 +139,11 @@ html, body {
 <script>
 
 
-function update(){
+function updateInfo(){
+
 
     const now = new Date();
+
 
 
     const weekdays = [
@@ -140,6 +155,7 @@ function update(){
         "FREDAG",
         "LØRDAG"
     ];
+
 
 
     const months = [
@@ -158,7 +174,8 @@ function update(){
     ];
 
 
-    document.getElementById("date").innerHTML =
+
+    const dateText =
         weekdays[now.getDay()] +
         " D. " +
         now.getDate() +
@@ -166,7 +183,13 @@ function update(){
         months[now.getMonth()];
 
 
+
+    document.getElementById("date").innerHTML = dateText;
+
+
+
     document.getElementById("clock").innerHTML =
+
         now.toLocaleTimeString(
             "da-DK",
             {
@@ -179,9 +202,12 @@ function update(){
 }
 
 
-update();
 
-setInterval(update,1000);
+updateInfo();
+
+
+setInterval(updateInfo,1000);
+
 
 
 </script>
