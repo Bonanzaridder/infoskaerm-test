@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="da">
+
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
 
 
 <style>
 
-html, body{
+
+html, body {
 
     margin:0;
     padding:0;
@@ -28,10 +32,11 @@ html, body{
 
 
 
-.box{
+/* HOVEDBOKS */
+
+.box {
 
     width:850px;
-
     height:600px;
 
     background:#20325A;
@@ -42,26 +47,25 @@ html, body{
 
     color:white;
 
-    position:relative;
+    box-sizing:border-box;
 
     overflow:hidden;
 
-    box-sizing:border-box;
+    position:relative;
 
 }
 
 
 
-/* ---------- SIDER ---------- */
+/* SIDER */
 
-
-.page{
+.page {
 
     position:absolute;
 
     inset:0;
 
-    padding:10px 35px 35px 35px;
+    padding:20px 35px 30px 35px;
 
     box-sizing:border-box;
 
@@ -72,7 +76,7 @@ html, body{
 }
 
 
-.hidden{
+.hidden {
 
     opacity:0;
 
@@ -82,24 +86,34 @@ html, body{
 
 
 
+/* =====================
+        VEJR
+===================== */
 
 
-/* ---------- VEJR ---------- */
+.today {
 
+    display:flex;
 
-.weather-title{
+    justify-content:center;
 
-    font-size:56px;
+    align-items:center;
 
-    font-weight:800;
+    gap:35px;
 
-    margin-bottom:5px;
+    margin-top:15px;
+
+    margin-bottom:30px;
 
 }
 
 
 
-.today{
+.big-icon {
+
+    width:150px;
+
+    height:150px;
 
     display:flex;
 
@@ -107,24 +121,28 @@ html, body{
 
     justify-content:center;
 
-    gap:35px;
-
-    margin-top:10px;
-
-    margin-bottom:35px;
-
 }
 
 
-.big-icon{
+.big-icon svg {
 
-    font-size:160px;
+    width:100%;
+
+    height:100%;
 
 }
 
 
 
-.today-label{
+.today-info {
+
+    text-align:center;
+
+}
+
+
+
+.today-label {
 
     font-size:28px;
 
@@ -134,11 +152,13 @@ html, body{
 
 
 
-#todayTemp{
+#todayTemp {
 
-    font-size:90px;
+    font-size:95px;
 
     font-weight:800;
+
+    line-height:1;
 
 }
 
@@ -146,33 +166,53 @@ html, body{
 
 
 
-.days{
+.uv {
+
+    text-align:center;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    margin-top:-20px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+
+
+.days {
 
     display:flex;
 
     justify-content:space-between;
 
+    gap:12px;
+
 }
 
 
 
-.day{
+.day {
 
     background:rgba(255,255,255,0.12);
 
     border-radius:18px;
 
-    width:110px;
+    width:140px;
 
-    height:190px;
+    height:180px;
 
     display:flex;
 
     flex-direction:column;
 
-    justify-content:center;
-
     align-items:center;
+
+    justify-content:center;
 
     font-size:28px;
 
@@ -182,49 +222,52 @@ html, body{
 
 
 
-.day .icon svg{
+.day .icon svg {
 
-    width:65px;
-    height:65px;
+    width:70px;
+
+    height:70px;
 
 }
 
 
 
-.temp{
+.temp {
 
     font-size:36px;
 
     font-weight:800;
 
+    margin-top:5px;
+
 }
 
 
 
+/* =====================
+       DAGSRUTINE
+===================== */
 
 
-/* ---------- DAGSPLAN ---------- */
-
-
-.message-title{
+.message-title {
 
     font-size:46px;
 
     font-weight:800;
 
-    margin-bottom:15px;
+    margin-bottom:20px;
 
 }
 
 
 
-.schedule{
+.schedule {
 
     width:100%;
 
     border-collapse:collapse;
 
-    font-size:32px;
+    font-size:30px;
 
     font-weight:700;
 
@@ -232,31 +275,31 @@ html, body{
 
 
 
-.schedule td{
+.schedule td {
 
-    padding:6px 0;
-
-}
-
-
-
-.schedule td:first-child{
-
-    width:125px;
-
-    color:#FFD54F;
+    padding:5px 0;
 
 }
 
 
 
-.schedule td:last-child{
+.schedule td:first-child {
 
-    padding-left:15px;
+    width:130px;
+
+    color:#7D0101;
+
+    font-weight:800;
 
 }
 
 
+
+.schedule td:last-child {
+
+    padding-left:20px;
+
+}
 
 
 </style>
@@ -270,23 +313,19 @@ html, body{
 <div class="box">
 
 
-<!-- VEJR -->
+<!-- VEJRSIDE -->
 
 <div class="page" id="weatherPage">
-
 
 
 <div class="today">
 
 
-<div id="todayIcon" class="big-icon">
-
-☀️
-
-</div>
+<div id="todayIcon" class="big-icon"></div>
 
 
-<div>
+<div class="today-info">
+
 
 <div class="today-label">
 
@@ -308,18 +347,21 @@ I dag
 </div>
 
 
+<div class="uv" id="uvIndex">
+
+UV indeks: --
+
+</div>
+
 
 <div class="days" id="forecast"></div>
-
 
 
 </div>
 
 
 
-
-
-<!-- DAGSPLAN -->
+<!-- DAGSRUTINE -->
 
 
 <div class="page hidden" id="messagePage">
@@ -330,7 +372,6 @@ I dag
 ⏰ Dagsrutine
 
 </div>
-
 
 
 <table class="schedule">
@@ -361,116 +402,234 @@ I dag
 
 
 </div>
-
-
-</div>
-
-
-
-
-
 <script>
 
 
 const latitude = 57.08;
-
 const longitude = 9.27;
 
 
 
+/* =====================
+       VEJRIKONER
+===================== */
+
+
 function weatherIcon(code){
 
+
 if(code === 0){
+
 return `
-<svg viewBox="0 0 100 100">
-<circle cx="50" cy="50" r="25" fill="#FFD54F"/>
-</svg>`;
+
+<svg viewBox="0 0 120 120">
+
+<circle cx="60" cy="60" r="28" fill="#FFD54F"/>
+
+</svg>
+
+`;
+
 }
+
 
 
 if(code === 1 || code === 2){
+
+
 return `
-<svg viewBox="0 0 120 100">
 
-<circle cx="40" cy="35" r="22" fill="#FFD54F"/>
+<svg viewBox="0 0 140 120">
 
-<path d="M35 75
-C20 75 20 55 35 55
-C40 35 75 40 75 60
-C95 60 95 80 75 80Z"
-fill="white"/>
 
-</svg>`;
+<circle cx="45" cy="45" r="25" fill="#FFD54F"/>
+
+
+<path d="
+M40 90
+C20 90 20 65 40 65
+C45 40 85 45 90 70
+C110 70 110 95 90 95
+Z"
+
+fill="#FFFFFF"/>
+
+
+</svg>
+
+`;
+
 }
+
+
 
 
 if(code === 3){
+
+
 return `
-<svg viewBox="0 0 120 100">
 
-<path d="M30 75
-C10 75 15 50 35 50
-C45 25 85 35 85 60
-C105 60 105 80 85 80Z"
-fill="white"/>
+<svg viewBox="0 0 140 120">
 
-</svg>`;
+
+<path d="
+M35 90
+C15 90 15 65 35 65
+C45 40 85 45 90 70
+C110 70 110 95 90 95
+Z"
+
+fill="#FFFFFF"/>
+
+
+</svg>
+
+`;
+
 }
+
+
+
 
 
 if(code >= 51 && code <= 67){
+
+
 return `
-<svg viewBox="0 0 120 120">
 
-<path d="M30 65
-C10 65 15 40 35 40
-C45 15 85 25 85 50
-C105 50 105 70 85 70Z"
-fill="white"/>
+<svg viewBox="0 0 140 140">
 
-<line x1="40" y1="80" x2="35" y2="105"
+
+<path d="
+M35 75
+C15 75 15 50 35 50
+C45 25 90 35 90 60
+C115 60 115 85 90 85
+Z"
+
+fill="#FFFFFF"/>
+
+
+<line x1="45" y1="95"
+x2="40" y2="120"
 stroke="#5DADE2"
-stroke-width="6"/>
+stroke-width="7"/>
 
-<line x1="70" y1="80" x2="65" y2="105"
+
+<line x1="75" y1="95"
+x2="70" y2="120"
 stroke="#5DADE2"
-stroke-width="6"/>
+stroke-width="7"/>
 
-</svg>`;
+
+</svg>
+
+`;
+
 }
+
+
+
 
 
 if(code >= 80 && code <= 82){
+
+
 return `
+
+<svg viewBox="0 0 140 140">
+
+
+<path d="
+M35 75
+C15 75 15 50 35 50
+C45 25 90 35 90 60
+C115 60 115 85 90 85
+Z"
+
+fill="#FFFFFF"/>
+
+
+
+<line x1="45" y1="95"
+x2="40" y2="120"
+stroke="#3498DB"
+stroke-width="8"/>
+
+
+
+<line x1="75" y1="95"
+x2="70" y2="120"
+stroke="#3498DB"
+stroke-width="8"/>
+
+
+</svg>
+
+`;
+
+}
+
+
+
+
+
+if(code >= 95){
+
+
+return `
+
+<svg viewBox="0 0 140 140">
+
+
+<path d="
+M35 75
+C15 75 15 50 35 50
+C45 25 90 35 90 60
+C115 60 115 85 90 85
+Z"
+
+fill="#FFFFFF"/>
+
+
+<polyline points="
+65,90
+50,115
+65,110
+55,135"
+
+fill="none"
+
+stroke="#FFD54F"
+
+stroke-width="8"/>
+
+
+</svg>
+
+`;
+
+}
+
+
+
+
+return `
+
 <svg viewBox="0 0 120 120">
 
-<path d="M30 65
-C10 65 15 40 35 40
-C45 15 85 25 85 50
-C105 50 105 70 85 70Z"
-fill="white"/>
+<circle cx="60" cy="60" r="28" fill="#FFD54F"/>
 
-<line x1="40" y1="80" x2="35" y2="105"
-stroke="#3498DB"
-stroke-width="7"/>
+</svg>
 
-<line x1="70" y1="80" x2="65" y2="105"
-stroke="#3498DB"
-stroke-width="7"/>
-
-</svg>`;
-}
-
-
-return `
-<svg viewBox="0 0 100 100">
-<circle cx="50" cy="50" r="25" fill="#FFD54F"/>
-</svg>`;
+`;
 
 }
 
 
-const daysDK=[
+
+
+const daysDK = [
 
 "Søn",
 "Man",
@@ -486,38 +645,74 @@ const daysDK=[
 
 
 
+/* =====================
+       HENT VEJR
+===================== */
+
+
+
 fetch(
 
-`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weather_code,temperature_2m_max&timezone=Europe%2FCopenhagen`
+`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weather_code,temperature_2m_max,uv_index_max&timezone=Europe%2FCopenhagen`
 
 )
 
 
-.then(response=>response.json())
+
+.then(response => response.json())
 
 
-.then(data=>{
+.then(data => {
+
+
+
+/* Temperatur i dag */
 
 
 document.getElementById("todayTemp").innerHTML =
 
-Math.round(data.daily.temperature_2m_max[0])+"°";
+Math.round(data.daily.temperature_2m_max[0]) + "°";
 
+
+
+
+
+/* Dagens ikon */
 
 
 document.getElementById("todayIcon").innerHTML =
+
 weatherIcon(data.daily.weather_code[0]);
 
 
 
-let html="";
+
+
+/* UV indeks */
+
+
+document.getElementById("uvIndex").innerHTML =
+
+"UV indeks: " + Math.round(data.daily.uv_index_max[0]);
 
 
 
-for(let i=0;i<5;i++){
 
 
-let date=new Date(data.daily.time[i]);
+
+/* De næste 5 dage */
+
+
+let html = "";
+
+
+
+for(let i = 0; i < 5; i++){
+
+
+
+let date = new Date(data.daily.time[i]);
+
 
 
 html += `
@@ -525,13 +720,19 @@ html += `
 
 <div class="day">
 
+
 ${daysDK[date.getDay()]}
+
 
 
 <span class="icon">
 
+
 ${weatherIcon(data.daily.weather_code[i])}
+
+
 </span>
+
 
 
 <span class="temp">
@@ -541,7 +742,9 @@ ${Math.round(data.daily.temperature_2m_max[i])}°
 </span>
 
 
+
 </div>
+
 
 
 `;
@@ -550,44 +753,63 @@ ${Math.round(data.daily.temperature_2m_max[i])}°
 
 
 
-document.getElementById("forecast").innerHTML=html;
+document.getElementById("forecast").innerHTML = html;
+
+
+
+})
+
+
+.catch(error => {
+
+
+console.log(error);
+
+
+document.getElementById("forecast").innerHTML =
+
+"Kunne ikke hente vejret";
 
 
 });
 
+// =====================
+// SKIFT MELLEM VEJR OG DAGSRUTINE
+// =====================
+
+
+let weatherVisible = true;
+
+
+setInterval(() => {
+
+
+    const weatherPage = document.getElementById("weatherPage");
+
+    const messagePage = document.getElementById("messagePage");
 
 
 
-
-// SKIFT MELLEM SIDER
-
-
-let weatherVisible=true;
+    if(weatherVisible){
 
 
+        weatherPage.classList.add("hidden");
 
-setInterval(()=>{
-
-
-if(weatherVisible){
-
-document.getElementById("weatherPage").classList.add("hidden");
-
-document.getElementById("messagePage").classList.remove("hidden");
+        messagePage.classList.remove("hidden");
 
 
-}else{
+    } else {
 
 
-document.getElementById("messagePage").classList.add("hidden");
+        messagePage.classList.add("hidden");
 
-document.getElementById("weatherPage").classList.remove("hidden");
-
-
-}
+        weatherPage.classList.remove("hidden");
 
 
-weatherVisible=!weatherVisible;
+    }
+
+
+    weatherVisible = !weatherVisible;
 
 
 },10000);
@@ -598,4 +820,5 @@ weatherVisible=!weatherVisible;
 
 
 </body>
+
 </html>
